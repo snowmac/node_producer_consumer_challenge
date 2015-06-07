@@ -22,3 +22,43 @@ The end product should:
 * NOT use Express (Connect is Ok)
 * Include UML Activity Diagram and UML Sequence Diagram documenting the business logic
 * Include Unit tests
+
+
+Setup Instructions: 
+====================
+
+1. Ensure Node JS is installed, run node -v to get the version, I'm running 'v0.10.32' 
+2. Ensure all the dependencies are installed: npm install 
+
+To Run:
+==========
+
+1. node runner.js
+	This class triggers the consumer and producers
+
+To Test: 
+===========
+
+Documents: 
+===========
+
+Uml documents are in ./docs/ 
+
+About this program
+===================
+
+A typical Producer/Consumer problem deals with concurrency by having a bounded buffer or queue where the producer uses a semophore (sleeps) until the queue has room for data, then it produces it. The client then cleans through the queue consuming everything until the queue is empty, then when it is, it sleeps. 
+
+Without external services like Redis or ZeroMQ, you have few options for this: 
+
+1. Build your own queuing service, like Zero MQ. I felt this was opposite of the requirements. 
+
+2. Implement a shared pool in Mongo or other database, where the consumer would read and the producers would write. Again I felt that hte requirements would not allow for this (NOT rely on any external services). 
+
+3. Have the producer send their product to the consumer. The obvious problems to this are: 
+
+A. Not truly concurrent. You can't have N number of producers and X number of consumers. 
+
+B. The consumer can get overwhelmed. 
+
+4. Create a socket connection to each service, then create global memory space that they all shared. I think all the concerns of # 3 would still apply. 

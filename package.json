@@ -1,0 +1,16 @@
+{
+  "name": "producer",
+  "version": "0.0.1",
+  "description": "",
+  "main": "",
+  "author": "Adam Bourg",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/snowmac/node_producer_consumer_challenge"
+  },
+  "dependencies": {
+    "http": "0.0.0",
+    "querystring": "^0.2.0"
+  }
+}

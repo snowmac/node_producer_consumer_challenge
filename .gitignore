@@ -1,0 +1,19 @@
+node_modules
+# Logs
+logs
+*.log
+npm-debug.log
+dump.rdb
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+.idea
+nohup.out
