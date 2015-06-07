@@ -1,5 +1,5 @@
 "use strict";
-var http = require('./http'); 
+var http = require('http'); 
 var querystring = require('querystring');
 
 var produceRandomAddition = function(){
@@ -11,6 +11,7 @@ var produceRandomAddition = function(){
 }; 
 
 var requestor = function(producerObject, target){
+
 	var exp = produceRandomAddition(); 
 	// prepare the posting objecting 
 	var postData = querystring.stringify({ 'expression' : exp });
@@ -26,10 +27,8 @@ var requestor = function(producerObject, target){
 
 	// prepare the request, sending in a callback to handle the response 
 	var request = http.request(producerObject, function(response){
-		console.log("Response from: " + target.host + ':' target.port); 
 		console.log("Status code: " + response.statusCode); 
 
-		response.setEncoding('utf8');
 		// output the response from the consumer 
 		response.on('data', function(data){
 			console.log("Response data: "); 
@@ -38,9 +37,9 @@ var requestor = function(producerObject, target){
 	}); 
 
 	// if there was an error talking to the service 
-	reqest.on('error', function(e){
-		console.log("Service error: "):
-		console.log(e):
+	request.on('error', function(e){
+		// console.log("Service error: ");
+		// console.log(e);
 	}); 
 
 	// post data to the service 
@@ -49,7 +48,6 @@ var requestor = function(producerObject, target){
 	// end our request 
 	request.end; 
 
-	console.log('Producer running at ' + producerObject.host + ":" + producerObject.port );
 };
 
 

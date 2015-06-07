@@ -1,8 +1,12 @@
 "use strict";
-var http = require('./http'); 
+var http = require('http'); 
 
 var preProcessedQueue = []; 
 var postProcessedQueue = []; 
+
+var htmlType = {'Content-Type': 'text/html'}; 
+var plainTextType = {'Content-Type': 'text/plain'}; 
+var jsonType = {'Content-Type': 'text/json'}; 
 
 var contains = function(list,value){
 	if (typeof list === "string"){
@@ -19,14 +23,17 @@ var contains = function(list,value){
 
 var server = function(config){
 
+	console.log('into the server')
+
 	http.createServer(function (request, response) {
 		
-		var url = request.url; 
+		console.log('into create server'); 
+		console.log(request);
 
-		// if we're posting to the consumer route 
-		if(contains(url, '/consumer')){
-			console.log(request)
-		} 
+		response.writeHead(200, plainTextType); 
+		response.write('foodbar');
+
+		response.end('foo bar')
 
 	}).listen(config.port, config.host);
 

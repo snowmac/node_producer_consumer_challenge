@@ -1,13 +1,13 @@
 {
 	"producer": [{
 		"port": "1234", 
-		"host": "http://localhost"
+		"host": "localhost"
 	},{
 		"port": "1235", 
-		"host": "http://localhost"
+		"host": "localhost"
 	}],
 	"consumer": {
-		"port": "02344",
-		"host": "http://localhost"
+		"port": "99881",
+		"host": "localhost"
 	} 
 }

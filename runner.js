@@ -5,9 +5,9 @@ var config = require('./config');
 // Start the consumer
 consumer(config.consumer); 
 
-// Start many producers
+// // Start many producers
 var fireProducer = function(){
-	for(var i = 0; i < config.prducer.length; i++){
+	for(var i = 0; i < config.producer.length; i++){
 		producer(config.producer[i], config.consumer); 
 	}
 }; 
